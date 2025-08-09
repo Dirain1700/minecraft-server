@@ -3,6 +3,7 @@ services:
     #  Bedrock Server                                     #
     # =================================================== #
     rinrikan_bd:
+        user: 1003:1003
         container_name: mc_bd_rinri
         image: itzg/minecraft-bedrock-server
         tty: true # ターミナルの割り当て（`-t`オプション）
