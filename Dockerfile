@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 
-RUN groupadd -g 1000 myuser && useradd -m -u 1000 -g myuser myuser
+RUN groupadd -g 1003 myuser && useradd -m -u 1003 -g myuser myuser
 
 USER myuser
 

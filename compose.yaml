@@ -1,7 +1,45 @@
 services:
     # =================================================== #
-    #  Bedrock Server                                     #
+    #  Vanila Server                                      #
     # =================================================== #
+    rinrikan_java:
+        user: 1003:1003
+        container_name: mc_java_rinri
+        image: itzg/minecraft-server
+        tty: true # ターミナルの割り当て（`-t`オプション）
+        stdin_open: true # 標準入出力ストリーム（`-i`オプション）
+        environment:
+            SERVER_NAME: "倫理観を持とう" # a default is "Dedicated Server"
+            ENABLE_ROLLING_LOGS: "true"
+            JVM_OPTS: "-XX:MaxRAMPercentage=75"
+            #TYPE: "VANILLA"
+            EULA: "true"
+            #VERSION: "LATEST"
+            MOTD: "The World of Vanilla Server"
+            MAX_PLAYERS: 5
+            MAX_WORLD_SIZE: 10000
+            ENABLE_COMMAND_BLOCK: "true"
+            SNOOPER_ENABLED: "false"
+            VIEW_DISTANCE: 12
+            PVP: "false"
+            LEVEL: "lv25565" # a default is "world"
+            #ONLINE_MODE: "true"
+            ALLOW_FLIGHT: "true"
+            USE_NATIVE_TRANSPORT: "true"
+            SIMULATION_DISTANCE: ""
+            STOP_SERVER_ANNOUNCE_DELAY: 60
+            GUI: "false"
+        ports:
+            - "25565:25565/tcp"
+            - "25565:25565/udp"
+        volumes:
+            - ./saves/rinrikan_java:/data
+            - /etc/timezone:/etc/timezone:ro
+        restart: unless-stopped
+
+        # =================================================== #
+        #  Bedrock Server                                     #
+        # =================================================== #
     rinrikan_bd:
         user: 1003:1003
         container_name: mc_bd_rinri
@@ -10,24 +48,24 @@ services:
         stdin_open: true # 標準入出力ストリーム（`-i`オプション）
         environment:
             SERVER_NAME: "倫理観を持とう" # a default is "Dedicated Server"
-            GAMEMODE: "SURVIVAL"
-            #FORCE_GAMEMODE: "FALSE"
-            DIFFICULTY: "EASY"
-            #ALLOW_CHEATS: "FALSE"
+            GAMEMODE: "survival"
+            #FORCE_GAMEMODE: "false"
+            DIFFICULTY: "easy"
+            #ALLOW_CHEATS: "false"
             MAX_PLAYERS: 10
-            #ONLINE_MODE: "TRUE"
-            #WHITE_LIST: "FALSE"
-            #ALLOW_LIST: "FALSE"
+            #ONLINE_MODE: "true"
+            #WHITE_LIST: "false"
+            #ALLOW_LIST: "false"
             #SERVER_PORT: "19132"
             #SERVER_PORT_V6: "19133"
-            #ENABLE_LAN_VISIBILITY: "TRUE"
+            #ENABLE_LAN_VISIBILITY: "true"
             #VIEW_DISTANCE: 12
             #TICK_DISTANCE: 4
             #PLAYER_IDLE_TIMEOUT: 30
             #MAX_THREADS: 8
             LEVEL_NAME: "lv19132" # a default is "Bedrock level"
-            EULA: "TRUE"
-            VERSION: "LATEST"
+            EULA: "true"
+            VERSION: "latest"
         ports:
             - 19132:19132/udp
         volumes:
