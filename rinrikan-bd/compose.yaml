@@ -1,0 +1,35 @@
+services:
+    # =================================================== #
+    #  Bedrock Server                                     #
+    # =================================================== #
+    rinrikan_bd:
+        container_name: mc_bd_rinri
+        image: itzg/minecraft-bedrock-server
+        tty: true # ターミナルの割り当て（`-t`オプション）
+        stdin_open: true # 標準入出力ストリーム（`-i`オプション）
+        environment:
+            SERVER_NAME: "倫理観を持とう" # a default is "Dedicated Server"
+            #GAMEMODE: "SURVIVAL"
+            #FORCE_GAMEMODE: "FALSE"
+            #DIFFICULTY: "EASY"
+            #ALLOW_CHEATS: "FALSE"
+            MAX_PLAYERS: 10
+            #ONLINE_MODE: "TRUE"
+            #WHITE_LIST: "FALSE"
+            #ALLOW_LIST: "FALSE"
+            #SERVER_PORT: "19132"
+            #SERVER_PORT_V6: "19133"
+            #ENABLE_LAN_VISIBILITY: "TRUE"
+            #VIEW_DISTANCE: 12
+            #TICK_DISTANCE: 4
+            #PLAYER_IDLE_TIMEOUT: 30
+            #MAX_THREADS: 8
+            LEVEL_NAME: "lv19132" # a default is "Bedrock level"
+            EULA: "TRUE"
+            VERSION: "LATEST"
+        ports:
+            - 19132:19132/udp
+        volumes:
+            - ./rinrikan_bd:/data
+            - /etc/timezone:/etc/timezone:ro
+        restart: unless-stopped
