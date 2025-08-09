@@ -1,0 +1,7 @@
+# Minecraft-Server
+
+## Setup
+
+1. mkdir saves
+2. chown -R ubuntu:ubuntu saves
+3. sudo setfacl -Rdm u:{Your UID}:rwX saves
