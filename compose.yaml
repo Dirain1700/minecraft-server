@@ -30,6 +30,6 @@ services:
         ports:
             - 19132:19132/udp
         volumes:
-            - ./rinrikan_bd:/data
+            - ./saves/rinrikan_bd:/data
             - /etc/timezone:/etc/timezone:ro
         restart: unless-stopped
