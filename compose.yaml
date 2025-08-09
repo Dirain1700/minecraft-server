@@ -9,9 +9,9 @@ services:
         stdin_open: true # 標準入出力ストリーム（`-i`オプション）
         environment:
             SERVER_NAME: "倫理観を持とう" # a default is "Dedicated Server"
-            #GAMEMODE: "SURVIVAL"
+            GAMEMODE: "SURVIVAL"
             #FORCE_GAMEMODE: "FALSE"
-            #DIFFICULTY: "EASY"
+            DIFFICULTY: "EASY"
             #ALLOW_CHEATS: "FALSE"
             MAX_PLAYERS: 10
             #ONLINE_MODE: "TRUE"
